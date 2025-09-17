@@ -32,10 +32,23 @@ function AutoVideo({ src, className, fallbackSrc }: { src: string; className?: s
   
   useEffect(() => {
     if (!ref) return;
+    
+    // 预加载视频元数据，确保快速播放
+    ref.preload = 'metadata';
+    
     const io = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) ref.play().catch(() => {});
-      else ref.pause();
-    }, { threshold: 0.4 });
+      if (e.isIntersecting) {
+        // 立即播放，不等待
+        ref.currentTime = 0;
+        ref.play().catch(() => {});
+      } else {
+        ref.pause();
+      }
+    }, { 
+      threshold: 0.1, // 降低阈值，元素10%进入视口就播放
+      rootMargin: '50px' // 提前50px开始检测
+    });
+    
     io.observe(ref);
     return () => io.disconnect();
   }, [ref]);
@@ -69,10 +82,10 @@ function AutoVideo({ src, className, fallbackSrc }: { src: string; className?: s
         src={src}
         className={className}
         title="AI agent demo video"
-        autoPlay
         muted
         loop
         playsInline
+        preload="auto"
         onError={handleError}
         style={{
           objectFit: 'cover',
