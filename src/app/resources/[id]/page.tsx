@@ -23,10 +23,11 @@ type Article = {
   featured: boolean;
 };
 
+
 export default function ArticleDetail() {
   const { language } = useLanguage();
   const params = useParams();
-  const [routeId, setRouteId] = useState<string>(typeof (params as any)?.id === 'string' ? (params as any).id : '');
+  const [routeId, setRouteId] = useState<string>(typeof (params as { id?: string })?.id === 'string' ? (params as { id: string }).id : '');
 
   const articles: Article[] = articlesData.articles;
 
@@ -41,7 +42,7 @@ export default function ArticleDetail() {
   }, [routeId]);
 
   const { article, relatedArticles } = useMemo(() => {
-    const id = routeId || ((params as any)?.id as string);
+    const id = routeId || ((params as { id?: string })?.id as string);
     const replacement = articles.find(a => a.id === 'stop-using-default-values-cbam-one-time-pcf');
     let found = articles.find(a => a.id === id) || null;
     if (found && found.id === 'cbam-default-values-vs-pcf' && replacement) {
@@ -73,7 +74,7 @@ export default function ArticleDetail() {
     url.searchParams.set('utm_medium', 'article');
     url.searchParams.set('utm_campaign', 'referral');
     setShareUrl(url.toString());
-    setCanWebShare(typeof navigator !== 'undefined' && !!(navigator as any).share);
+    setCanWebShare(typeof navigator !== 'undefined' && !!(navigator as Navigator & { share?: unknown }).share);
   }, [article]);
 
   // SSR 首屏避免直接 404，若未解析到则给出轻量提示
@@ -362,7 +363,7 @@ export default function ArticleDetail() {
                   {canWebShare && (
                     <button
                       type="button"
-                      onClick={() => (navigator as any).share({ title: getArticleTitle(article), url: shareUrl })}
+                      onClick={() => (navigator as Navigator & { share?: (data: { title: string; url: string }) => Promise<void> }).share?.({ title: getArticleTitle(article), url: shareUrl })}
                       className="px-4 py-2 rounded-full bg-[#9ef894] hover:bg-[#7dd87d] text-black font-medium transition-all duration-300 hover:scale-105 flex items-center gap-2"
                     >
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
