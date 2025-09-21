@@ -667,7 +667,7 @@ export default function Home() {
               </div>
 
               {/* Description */}
-              <div className={`absolute left-10 w-[300px] ${activePersona === 'brandOwner' ? 'top-[190px]' : 'top-[170px]'}`}>
+              <div className="absolute left-10 w-[400px] top-[190px]">
                 <p className="text-white text-base font-normal tracking-[-0.18px] leading-[24px]">
                   {t.sections.personas[activePersona].needs}
                 </p>
@@ -702,48 +702,48 @@ export default function Home() {
                       {activePersona === 'carbonExpert' ? (
                         <>
                           <h4 className="text-white text-sm font-semibold mb-2 opacity-90">You Might Be Struggling With:</h4>
-                          <div className="h-10 bg-white/20 rounded w-3/4 animate-shimmer flex items-center px-4">
+                          <div className="h-12 bg-white/20 rounded w-5/6 animate-shimmer flex items-center px-4">
                             <span className="text-white text-sm font-normal tracking-[-0.18px] leading-tight">{t.sections.personas.carbonExpert.painPoints[0]}</span>
                           </div>
                           <div className="h-12 bg-white/15 rounded w-full flex items-center px-4">
                             <span className="text-white text-sm font-normal tracking-[-0.18px] leading-tight">{t.sections.personas.carbonExpert.painPoints[1]}</span>
                           </div>
-                          <div className="h-11 bg-white/25 rounded w-5/6 flex items-center px-4">
+                          <div className="h-12 bg-white/25 rounded w-5/6 flex items-center px-4">
                             <span className="text-white text-sm font-normal tracking-[-0.18px] leading-tight">{t.sections.personas.carbonExpert.painPoints[2]}</span>
                           </div>
-                          <div className="h-10 bg-white/15 rounded w-4/5 flex items-center px-4">
+                          <div className="h-12 bg-white/15 rounded w-4/5 flex items-center px-4">
                             <span className="text-white text-sm font-normal tracking-[-0.18px] leading-tight">{t.sections.personas.carbonExpert.painPoints[3]}</span>
                           </div>
-                          <div className="h-14 bg-white/20 rounded w-full flex items-center px-4">
+                          <div className="h-12 bg-white/20 rounded w-full flex items-center px-4">
                             <span className="text-white text-sm font-normal tracking-[-0.18px] leading-tight">{t.sections.personas.carbonExpert.painPoints[4]}</span>
                           </div>
                         </>
                       ) : activePersona === 'brandOwner' ? (
                         <div className="space-y-4 flex-1 pt-2">
                           <h4 className="text-white text-sm font-semibold mb-2 opacity-90">Common Challenges Include:</h4>
-                          <div className="h-12 bg-white/20 rounded w-5/6 flex items-center px-4">
+                          <div className="h-16 bg-white/20 rounded w-5/6 flex items-center px-4">
                             <span className="text-white text-sm font-normal tracking-[-0.18px] leading-tight">{t.sections.personas.brandOwner.painPoints[0]}</span>
                           </div>
-                          <div className="h-10 bg-white/15 rounded w-3/5 flex items-center px-4">
+                          <div className="h-14 bg-white/15 rounded w-4/5 flex items-center px-4">
                             <span className="text-white text-sm font-normal tracking-[-0.18px] leading-tight">{t.sections.personas.brandOwner.painPoints[1]}</span>
                           </div>
-                          <div className="h-10 bg-white/25 rounded w-4/5 flex items-center px-4">
+                          <div className="h-14 bg-white/25 rounded w-5/6 flex items-center px-4">
                             <span className="text-white text-sm font-normal tracking-[-0.18px] leading-tight">{t.sections.personas.brandOwner.painPoints[2]}</span>
                           </div>
-                          <div className="h-14 bg-white/15 rounded w-2/3 flex items-center px-4">
+                          <div className="h-16 bg-white/15 rounded w-4/5 flex items-center px-4">
                             <span className="text-white text-sm font-normal tracking-[-0.18px] leading-tight">{t.sections.personas.brandOwner.painPoints[3]}</span>
                           </div>
                         </div>
                       ) : (
                         <div className="space-y-4 flex-1 pt-2">
                           <h4 className="text-white text-sm font-semibold mb-2 opacity-90">You&rsquo;re Probably Facing:</h4>
-                          <div className="h-11 bg-white/20 rounded w-4/5 animate-shimmer flex items-center px-4">
+                          <div className="h-16 bg-white/20 rounded w-5/6 animate-shimmer flex items-center px-4">
                             <span className="text-white text-sm font-normal tracking-[-0.18px] leading-tight">{t.sections.personas.supplyChain.painPoints[0]}</span>
                           </div>
-                          <div className="h-12 bg-white/15 rounded w-3/4 flex items-center px-4">
+                          <div className="h-16 bg-white/15 rounded w-4/5 flex items-center px-4">
                             <span className="text-white text-sm font-normal tracking-[-0.18px] leading-tight">{t.sections.personas.supplyChain.painPoints[1]}</span>
                           </div>
-                          <div className="h-16 bg-white/25 rounded w-full flex items-center px-4">
+                          <div className="h-20 bg-white/25 rounded w-full flex items-center px-4">
                             <span className="text-white text-sm font-normal tracking-[-0.18px] leading-tight">{t.sections.personas.supplyChain.painPoints[2]}</span>
                           </div>
                         </div>
@@ -1021,7 +1021,7 @@ export default function Home() {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
               {t.sections.aiAssistants.title}
             </h2>
-            <p className="text-xl text-white/80 max-w-5xl mx-auto whitespace-nowrap">
+            <p className="text-xl text-white/80 max-w-5xl mx-auto leading-relaxed">
               {t.sections.aiAssistants.subtitle}
             </p>
           </div>
@@ -1798,7 +1798,7 @@ export default function Home() {
           <div className="space-y-3">
             {t.faq?.groups
               ?.flatMap((g) => g.items)
-              .slice(0, 3)
+              .slice(7, 10)
               .map((item, idx) => (
                 <details key={idx} className="group rounded-xl bg-white/5 border border-white/10 p-4">
                   <summary className="cursor-pointer list-none flex items-center justify-between text-white font-semibold">
