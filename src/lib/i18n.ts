@@ -600,7 +600,7 @@ export const translations: Record<Language, TranslationData> = {
         carbonExpert: {
           title: 'Carbon/ESG Professionals',
           role: 'ESG/Sustainability/Carbon/Consulting Expert',
-          needs: 'I need automated, intelligent tools to improve work efficiency and report accuracy',
+          needs: 'Accelerate Life Cycle Assessment (LCA) calculations and carbon reporting with AI-powered automation, achieving 95% accuracy and reducing project timelines from weeks to hours.',
           stat: '1-Minute LCA & 95% Accuracy',
           statDescription: 'Slash Waiting Time & Ensure Confidence',
           secondStatDescription: 'Auto Batch Factor Matching',
@@ -608,11 +608,11 @@ export const translations: Record<Language, TranslationData> = {
           fourthStat: 'DQR+ Industry Data & Field Validation',
           fourthStatDescription: 'Accelerating the entire compliance process.',
           painPoints: [
-            'Rules and factors don\'t match — results fluctuate ±10-20%',
-            'Most data delayed or incorrect — on-time rate below 50%, cleanup work takes enormous time',
-            'Each SKU takes days; most time spent on factor matching',
-            'Lack of process or data assessment — risks hard to discover',
-            'Evidence scattered; external checks slow and expensive, rework constantly delays delivery'
+            'Rules and emission factors don\'t align—results fluctuate ±10–20%.',
+            'Data is delayed or incorrect; on-time delivery falls below 50% and cleanup consumes enormous time.',
+            'Each SKU takes days to process, with most time lost to factor matching.',
+            'No formal process or data assessment—risks remain hidden and hard to detect.',
+            'Evidence is scattered; external checks are slow and expensive, and rework continually delays delivery.'
           ],
           testimonial: '"Climate Seal isn\'t just another calculation tool, but an intelligent operating system that supports our need for precision and efficiency at scale."',
           author: 'Dr. Sarah Chen',
@@ -621,7 +621,7 @@ export const translations: Record<Language, TranslationData> = {
         brandOwner: {
           title: 'Brands & Procurement Leaders',
           role: 'Sustainability Leader',
-          needs: 'I need to achieve brand and supply chain carbon reduction goals, reduce supply chain carbon management costs and pressure, enabling painless high-quality carbon emission data from supply chain',
+          needs: 'Streamline supply chain carbon management with automated data collection, reduce compliance costs, and achieve SBTi targets through AI-powered carbon footprint tracking and supplier engagement.',
           stat: '≈$100 / 4 Hours per SKU',
           statDescription: 'Slash Compliance Cost & Time',
           secondStatDescription: 'Built-in Data Quality Gates',
@@ -629,10 +629,10 @@ export const translations: Record<Language, TranslationData> = {
           fourthStat: 'A Streamlined Process for Suppliers',
           fourthStatDescription: 'Rigorous Decarbonization & Sourcing',
           painPoints: [
-            'Supply-chain companies lack specialized expertise, making compliance costly and burdensome',
-            'Endless chasing supply chain data; on-time deliveries only 40-70%',
-            'Poor data quality skews decarbonisation priorities',
-            'No clear ROI and MACC, decarbonization projects fail to get green‑lit, stalling SBTi and CSRD milestones.'
+            'Limited in-house sustainability expertise makes supply-chain compliance costly and complex.',
+            'Teams chase fragmented supplier data; on-time deliveries stagnate at 40–70%.',
+            'Poor supplier data quality skews decarbonization priorities and investment decisions.',
+            'Without clear ROI or MACC, decarbonization projects aren\'t approved—stalling SBTi targets and CSRD compliance.'
           ],
           testimonial: '"Climate Seal transformed our supply chain carbon management from a compliance burden into a competitive advantage."',
           author: 'Michael Rodriguez',
@@ -641,7 +641,7 @@ export const translations: Record<Language, TranslationData> = {
         supplyChain: {
           title: 'Suppliers & Exporters',
           role: 'Export Enterprise Compliance Manager',
-          needs: 'I need low-cost, high-efficiency solutions to provide credible carbon footprint reports to importers and downstream customers, ensuring sales are not affected',
+          needs: 'Deliver credible carbon footprint reports to importers and customers with cost-effective PCF automation, ensuring compliance and maintaining competitive advantage in global markets.',
           stat: '3 Files & One Simple Workflow.',
           statDescription: 'Reduce Compliance Cost Significantly',
           secondStatDescription: 'Auto-Matching & Built-in Validation',
@@ -649,9 +649,9 @@ export const translations: Record<Language, TranslationData> = {
           fourthStat: '4-Hour, Audit-Ready PCF',
           fourthStatDescription: 'Meet requirements effortlessly',
           painPoints: [
-            'PCF reports take 4-8 weeks, missing RFQ / tender deadlines',
-            'Rework cycles delay shipments and risk customs holds',
-            'No in-house carbon expertise, third-party consulting is expensive, and mainstream carbon tools are pricey and hard to use'
+            'PCF reporting timelines of 4–8 weeks lead to missed RFQ/tender windows and lost bids.',
+            'Rework cycles push back shipment dates and elevate the risk of customs delays or holds.',
+            'Lacking in-house carbon expertise forces dependence on expensive consultants, while mainstream carbon tools remain costly and difficult to use.'
           ],
           testimonial: '"With Climate Seal, we can now provide world-class carbon footprint reports at a fraction of the cost and time."',
           author: 'Li Wei',
@@ -660,7 +660,7 @@ export const translations: Record<Language, TranslationData> = {
       },
       aiAssistants: {
         title: 'Meet Your AI Carbon Expert And Assistants',
-        subtitle: 'Choose your role. Your AI carbon experts and assistants are ready to support you 24/7.',
+        subtitle: 'Choose your role and unlock AI-powered carbon solutions that eliminate manual calculations, reduce compliance costs, and accelerate your sustainability goals with expert guidance.',
         comingSoon: 'Coming soon',
         getStarted: 'Book a Demo with First Report Free',
         trustCenter: 'Visit our resource session',
