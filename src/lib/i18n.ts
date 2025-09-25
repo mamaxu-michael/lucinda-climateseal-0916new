@@ -694,7 +694,7 @@ export const translations: Record<Language, TranslationData> = {
           brandOwner: {
             brandAnalyzer: {
               title: 'Supplier Intake & Dispatch',
-              description: 'Push tasks and AI tools across your entire supply chain—suppliers run zero-friction AI calculations at no additional cost, reducing supplier burden.'
+              description: 'Push tasks and AI tools across your supply chain to capture Scope 3 emissions data at source—zero‑friction supplier workflows reduce burden and cost.'
             },
             scopeTracker: {
               title: 'Supplier Risk & Scoring',

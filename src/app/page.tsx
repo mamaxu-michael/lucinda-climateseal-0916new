@@ -481,7 +481,7 @@ export default function Home() {
           <div className="relative z-0 h-[300px] sm:h-[400px] md:h-[500px] lg:h-full lg:min-h-screen order-1 lg:order-2">
             <Image
               src="/polar-bears.png"
-              alt="Illustration of polar bears swimming, Climate Seal brand visual"
+              alt="Polar bears swimming - Climate Seal AI carbon footprint platform visual"
               fill
               className="object-contain object-center filter drop-shadow-lg"
               priority
@@ -1683,7 +1683,7 @@ export default function Home() {
             <div className="relative h-[250px] sm:h-[350px] md:h-[400px] lg:h-[500px] xl:h-[600px] rounded-2xl overflow-hidden lg:pl-40 order-2 lg:order-1" style={{transform: 'translateY(0cm)'}}>
               <Image
                 src="/polar-bears.png"
-                alt="Illustration of polar bears on ice, Climate Seal brand visual"
+                alt="Polar bears on ice - Climate Seal carbon accounting platform visual"
                 fill
                 className="object-cover object-center"
                 quality={100}

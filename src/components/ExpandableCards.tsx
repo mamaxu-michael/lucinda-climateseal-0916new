@@ -210,13 +210,15 @@ export default function ExpandableCards({
               </div>
 
               {/* 文案区 - 定位到底部 */}
-              <div className="absolute bottom-0 left-0 right-0 h-28 p-3 bg-black/60 backdrop-blur-sm flex flex-col justify-end">
+              <div className="absolute bottom-0 left-0 right-0 h-[140px] md:h-[148px] p-4 bg-black/60 backdrop-blur-sm flex flex-col justify-end">
                 <div className="text-base md:text-lg font-semibold">{it.title}</div>
-                <p className="mt-1 text-xs text-white/80">
-                  {isActive ? 
-                    (it.summary.length > 80 ? it.summary.substring(0, 80) + "..." : it.summary) 
-                    : it.summary
-                  }
+                <p className={[
+                  "mt-1 text-sm md:text-base text-white/80",
+                  "leading-6 md:leading-7 break-words hyphens-auto",
+                  isActive ? "md:line-clamp-3" : "line-clamp-2"
+                ].join(" ")}
+                >
+                  {it.summary}
                 </p>
 
                 {/* 展开后的更多内容 */}

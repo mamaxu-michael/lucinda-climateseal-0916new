@@ -53,12 +53,67 @@ export default function SolutionResources() {
   }, [articles]);
 
   useEffect(() => {
+    // 支持 ?category= 预选
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const cat = params.get('category');
+      // 仅允许选择存在且非空的分类
+      const hasArticles = (id: string) => meaningfulArticles.some(a => a.category === id);
+      if (cat && (cat === 'all' || ((categories || []).some(c => c.id === cat) && hasArticles(cat)))) {
+        setSelectedCategory(cat);
+      } else if (cat) {
+        // 空分类或不存在 → 回退到 all（静默处理）
+        setSelectedCategory('all');
+      }
+    }
+  }, [categories, meaningfulArticles]);
+
+  useEffect(() => {
     if (selectedCategory === 'all') {
       setFilteredArticles(meaningfulArticles);
     } else {
       setFilteredArticles(meaningfulArticles.filter(article => article.category === selectedCategory));
     }
   }, [selectedCategory, meaningfulArticles]);
+
+  const categoryDescriptions: Record<string, { en: string; zh: string }> = {
+    'supply-chain-scope-3': {
+      en: 'Practical guides for supplier data collection, value‑chain modeling, and Scope 3 reporting—covering RFQs, quality scoring, and audit‑ready evidence.',
+      zh: '聚焦供应商数据采集、价值链建模与范围3披露的实操指南，兼顾RFQ流程、质量评分与可审计证据。'
+    },
+    'cbam-csrd-pef-compliance': {
+      en: 'How to meet CBAM, CSRD and PEF/DPP evidence requirements with ISO‑aligned PCFs, data lineage, and versioned disclosures—so shipments and filings stay compliant.',
+      zh: '以符合ISO的方法、证据链与版本化披露满足CBAM、CSRD与PEF/DPP要求，确保发运与申报顺利合规。'
+    },
+    'pcf-lca-methods': {
+      en: 'ISO 14067 and GHG Product–aligned methods: functional units, boundaries, allocation, data quality and uncertainty for credible PCFs.',
+      zh: '对齐 ISO 14067/GHG 产品标准的方法论：功能单位、系统边界、分配、数据质量与不确定性，支撑可信 PCF。'
+    },
+    'data-factors-baselines': {
+      en: 'Emission factors, provenance and versions; baselines and data‑quality management for defensible numbers.',
+      zh: '排放因子来源与版本、基线与数据质量管理，确保口径可辩护。'
+    },
+    'industry-playbooks': {
+      en: 'Sector playbooks for food, textiles, manufacturing, logistics and construction—hotspots and abatement options.',
+      zh: '面向食品、纺织、制造、物流与建材的行业手册：热点与减排路径。'
+    },
+    'case-studies': {
+      en: 'Real implementations with before‑after results, ROI/MACC and cycle‑time reductions.',
+      zh: '真实落地案例与前后对比，包含ROI/MACC与周期缩短效果。'
+    },
+    'research-insights': {
+      en: 'Policy trends, methodology updates and market insights for carbon accounting and assurance.',
+      zh: '政策趋势、方法更新与市场洞察，服务于碳核算与鉴证。'
+    },
+    'getting-started': {
+      en: 'Foundational guides, checklists and FAQs to get started quickly with product carbon footprints.',
+      zh: 'PCF 入门概念、清单与常见问题，帮助快速起步。'
+    },
+    'technology': {
+      en: 'Technology topics and implementation notes for building automation into carbon workflows.',
+      zh: '碳核算自动化相关的技术主题与实现要点。'
+    }
+  };
 
   const getArticleTitle = (article: Article) => {
     return language === 'zh' ? article.titleZh : article.title;
@@ -158,7 +213,7 @@ export default function SolutionResources() {
             >
               {language === 'zh' ? '全部' : 'All'}
             </button>
-            {categories.map((category) => (
+            {(categories || []).filter(cat => meaningfulArticles.some(a => a.category === cat.id)).map((category) => (
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
@@ -172,6 +227,14 @@ export default function SolutionResources() {
               </button>
             ))}
           </div>
+          {/* Category SEO intro */}
+          {selectedCategory !== 'all' && (
+            <div className="max-w-4xl mx-auto text-center">
+              <p className="text-white/80 text-base md:text-lg leading-relaxed">
+                {(categoryDescriptions[selectedCategory]?.[language === 'zh' ? 'zh' : 'en']) || ''}
+              </p>
+            </div>
+          )}
         </div>
       </section>
 
