@@ -64,6 +64,7 @@ export function useLanguage() {
 // 语言切换组件
 export function LanguageSwitcher() {
   const { language, setLanguage, isLoading } = useLanguage();
+  const [isOpen, setIsOpen] = React.useState(false);
 
   if (isLoading) {
     return (
@@ -73,28 +74,52 @@ export function LanguageSwitcher() {
     );
   }
 
+  const languages = [
+    { code: 'en', name: 'English', flag: '🇺🇸' },
+    { code: 'zh', name: '中文', flag: '🇨🇳' }
+  ];
+
+  const currentLang = languages.find(lang => lang.code === language);
+
   return (
-    <div className="flex items-center space-x-1 bg-white bg-opacity-20 rounded-full p-1">
+    <div className="relative">
       <button
-        onClick={() => setLanguage('en')}
-        className={`px-3 py-1 rounded-full text-sm font-medium transition-all duration-200 ${
-          language === 'en'
-            ? 'bg-white text-gray-800 shadow-md'
-            : 'text-white hover:bg-white hover:bg-opacity-20'
-        }`}
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex items-center space-x-2 px-3 py-2 text-sm text-white/80 hover:text-white hover:bg-white/10 rounded-md transition-colors"
       >
-        EN
+        <span className="text-lg">{currentLang?.flag}</span>
+        <span>{currentLang?.name}</span>
+        <svg 
+          className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} 
+          fill="none" 
+          stroke="currentColor" 
+          viewBox="0 0 24 24"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
       </button>
-      <button
-        onClick={() => setLanguage('zh')}
-        className={`px-3 py-1 rounded-full text-sm font-medium transition-all duration-200 ${
-          language === 'zh'
-            ? 'bg-white text-gray-800 shadow-md'
-            : 'text-white hover:bg-white hover:bg-opacity-20'
-        }`}
-      >
-        中文
-      </button>
+
+      {isOpen && (
+        <div className="absolute bottom-full right-0 mb-2 w-32 bg-white rounded-md shadow-lg border border-gray-200 overflow-hidden z-50">
+          {languages.map((lang) => (
+            <button
+              key={lang.code}
+              onClick={() => {
+                setLanguage(lang.code as Language);
+                setIsOpen(false);
+              }}
+              className={`w-full flex items-center space-x-3 px-3 py-2 text-sm transition-colors ${
+                language === lang.code
+                  ? 'bg-gray-100 text-gray-900'
+                  : 'text-gray-700 hover:bg-gray-50'
+              }`}
+            >
+              <span className="text-lg">{lang.flag}</span>
+              <span>{lang.name}</span>
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
