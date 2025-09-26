@@ -75,8 +75,6 @@ const Navbar = () => {
                 </button>
               );
             })}
-            {/* Language Switcher */}
-            <LanguageSwitcher />
           </div>
 
           {/* Mobile menu button */}
@@ -123,11 +121,6 @@ const Navbar = () => {
                   </button>
                 );
               })}
-              <div className="border-t border-teal-700 pt-3 mt-3">
-                <div className="flex items-center justify-center px-3 py-2">
-                  <LanguageSwitcher />
-                </div>
-              </div>
             </div>
           </div>
         )}

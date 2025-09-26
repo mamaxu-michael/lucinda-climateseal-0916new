@@ -22,11 +22,13 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'zh')) {
       setLanguage(savedLanguage);
     } else {
-      // 检测浏览器语言设置
-      const browserLanguage = navigator.language.toLowerCase();
-      if (browserLanguage.includes('zh')) {
+      // 默认英文，除非URL参数明确指定中文
+      const urlParams = new URLSearchParams(window.location.search);
+      const langParam = urlParams.get('lang');
+      if (langParam === 'zh') {
         setLanguage('zh');
       }
+      // 否则保持默认英文
     }
     setIsLoading(false);
   }, []);
