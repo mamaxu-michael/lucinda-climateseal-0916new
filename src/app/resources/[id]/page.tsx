@@ -276,7 +276,7 @@ export default function ArticleDetail() {
           </div>
 
           {/* Article Title */}
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight font-lora">
             {getArticleTitle(article)}
           </h1>
 

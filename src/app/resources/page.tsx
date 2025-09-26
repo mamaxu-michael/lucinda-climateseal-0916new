@@ -187,7 +187,7 @@ export default function SolutionResources() {
       {/* Header */}
       <section className="pt-32 pb-16 px-4">
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 font-lora">
             {language === 'zh' ? '解决方案资源中心' : 'Solution Resources'}
           </h1>
           <p className="text-xl text-white/80 max-w-3xl mx-auto">

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Lora, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -7,14 +7,16 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import Script from 'next/script';
 import TitleUpdater from "@/components/TitleUpdater";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const lora = Lora({
+  variable: "--font-lora",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const sourceSansPro = Source_Sans_3({
+  variable: "--font-source-sans",
   subsets: ["latin"],
+  weight: ["300", "400", "600", "700"],
 });
 
 const googleVerification = process.env.NEXT_PUBLIC_GSC_VERIFICATION as string | undefined;
@@ -215,12 +217,12 @@ export default function RootLayout({
         </Script>
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${lora.variable} ${sourceSansPro.variable} antialiased bg-[rgb(0,52,50)]`}
       >
         <LanguageProvider>
           <TitleUpdater />
           <Navbar />
-          <main className="min-h-screen">
+          <main className="min-h-screen bg-[rgb(0,52,50)]">
             {children}
           </main>
           <Footer />

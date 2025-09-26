@@ -15,7 +15,7 @@ const Navbar = () => {
 
   const navItems = [
     { name: t.nav.home, href: '#home', route: '/' },
-    { name: t.nav.products, href: '#products', route: '/' },
+    { name: t.nav.products, href: '#advantages', route: '/' },
     { name: t.nav.resources, href: '/resources', route: '/resources', isLink: true },
     { name: t.nav.pricing, href: '#pricing', route: '/' },
     { name: t.nav.about, href: '#about', route: '/' },

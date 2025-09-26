@@ -12,7 +12,8 @@ interface FAQAccordionProps {
 }
 
 export default function FAQAccordion({ items }: FAQAccordionProps) {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  // 默认全部折叠
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggle = (index: number) => {
     setOpenIndex((current) => (current === index ? null : index));

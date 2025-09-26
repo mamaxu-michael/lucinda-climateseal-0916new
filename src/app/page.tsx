@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import ExpandableCards from '@/components/ExpandableCards';
+import ComparisonSection from '@/components/ComparisonSection';
 import { motion } from 'framer-motion';
 
 export default function Home() {
@@ -426,7 +427,7 @@ export default function Home() {
         
         <div className="relative z-10 min-h-screen grid grid-cols-1 lg:grid-cols-2 items-center">
           <div className="text-center lg:text-left text-white px-4 lg:px-16 order-2 lg:order-1 mt-6 lg:mt-0 lg:translate-x-8 lg:translate-y-4">
-            <h1 className="text-[clamp(22px,5vw,40px)] md:text-[clamp(28px,4vw,48px)] font-bold leading-snug mb-4 relative z-20">
+            <h1 className="text-[clamp(22px,5vw,40px)] md:text-[clamp(28px,4vw,48px)] font-bold leading-snug mb-4 relative z-20 font-lora">
               {/* Keep mobile unchanged; on desktop enforce no-wrap for specific phrases */}
               <span className="md:hidden">{t.hero.title}</span>
               <span className="hidden md:inline">
@@ -512,9 +513,14 @@ export default function Home() {
         <div className="block md:hidden px-4">
           {/* Mobile Title */}
           <div className="text-center mb-8">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 sm:mb-8 font-lora">
               {t.sections.personas?.title || 'Solutions for every role.'}
             </h2>
+            <p className="text-base sm:text-lg text-white/80 max-w-3xl mx-auto leading-relaxed">
+              {language === 'zh'
+                ? '我们将复杂的碳数据采集、因子匹配与核查打包为低门槛的引导式工作流，让每个角色都能在更短时间内拿到审计就绪的结果，并把时间与预算留给真正创造价值的减排行动。'
+                : 'We package complex data intake, factor matching, and verification into one AI workflow, so every role can deliver audit‑ready results faster, and spend time and budget on actions that truly cut emissions.'}
+            </p>
           </div>
 
           {/* Mobile Tab Navigation - Compact */}
@@ -618,9 +624,14 @@ export default function Home() {
         <div className="hidden md:block relative w-full max-w-[1200px] h-auto mx-auto px-4">
           {/* Title */}
           <div className="text-center mb-6">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 sm:mb-8 font-lora">
               {t.sections.personas?.title || 'Solutions for every role.'}
             </h2>
+            <p className="text-lg md:text-xl text-white/80 max-w-5xl mx-auto leading-relaxed">
+              {language === 'zh'
+                ? '我们将复杂的碳数据采集、因子匹配与核查打包为低门槛的引导式工作流，让每个角色都能在更短时间内拿到审计就绪的结果，并把时间与预算留给真正创造价值的减排行动。'
+                : 'We package complex data intake, factor matching, and verification into one AI workflow, so every role can deliver audit‑ready results faster, and spend time and budget on actions that truly cut emissions.'}
+            </p>
           </div>
 
           {/* Tab Navigation */}
@@ -864,7 +875,7 @@ export default function Home() {
         <div className="block md:hidden px-4">
           {/* Mobile Title */}
           <div className="text-center mb-8">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 sm:mb-8 font-lora">
               {t.sections.aiAssistants.title}
             </h2>
             <p className="text-sm text-white/80 leading-relaxed">
@@ -1018,7 +1029,7 @@ export default function Home() {
 
           {/* Title */}
           <div className="text-center mb-8">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 sm:mb-8 font-lora">
               {t.sections.aiAssistants.title}
             </h2>
             <p className="text-xl text-white/80 max-w-5xl mx-auto leading-relaxed">
@@ -1061,24 +1072,22 @@ export default function Home() {
                 <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
               </svg>
             </a>
-            <Link href="/resources" className="border-2 border-white text-white rounded-[160px] px-8 py-4 hover:bg-white hover:text-[rgb(0,52,50)] transition-all">
+            <Link href="/resources" className="text-white rounded-[160px] px-8 py-4 transition-all bg-gradient-to-r from-indigo-500 to-purple-500 hover:opacity-95 shadow-md">
               <span className="text-lg font-medium">{t.sections.aiAssistants.trustCenter}</span>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Monday.com Difference Section */}
+      {/* Comparison Section */}
+      <ComparisonSection />
+
+      {/* Difference Section (combined with comparison) - hide standalone title, keep content */}
       <section className="relative bg-[rgb(0,52,50)] py-8 overflow-hidden">
         
         {/* Mobile Version - 2x2 Grid with Animal Cards */}
         <div className="block md:hidden px-4">
-          {/* Mobile Title */}
-          <div className="text-center mb-6">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
-              {t.sections.difference.title}
-            </h2>
-          </div>
+          {/* Mobile Title removed to combine sections visually */}
 
           {/* Mobile 2x2 Grid Cards with Animals */}
           <div className="grid grid-cols-2 gap-3">
@@ -1241,25 +1250,14 @@ export default function Home() {
 
         {/* Desktop Version - Keep Original Unchanged */}
         <div className="hidden md:block relative w-full max-w-[1200px] mx-auto px-4">
-          {/* Title */}
-          <div className="text-center mb-2">
-            <motion.h2 
-              className="text-3xl sm:text-4xl md:text-5xl font-bold text-white"
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.6 }}
-              transition={{ duration: 0.5, ease: [0.2, 0.8, 0.2, 1] }}
-            >
-              {t.sections.difference.title}
-            </motion.h2>
-          </div>
+          {/* Title removed to combine with previous section */}
 
           {/* Cards Layout */}
           <div className="relative w-full h-[580px]">
             {/* Flexible yet standardized - Green Card (Top Left) */}
             {/* 灰色背景块 */}
             <motion.div 
-              className="absolute w-[280px] h-[165px] top-[40px] left-[35px] rounded-[20px] group cursor-pointer overflow-hidden border-2 border-white/20 ring-1 ring-white/20 animate-float-gentle"
+              className="absolute w-[280px] h-[165px] top-[40px] left-[35px] rounded-xl group cursor-pointer overflow-hidden border-2 border-white/20 ring-1 ring-white/10 hover:ring-white/20"
               style={{
                 backgroundImage: 'url(/faster-beaver.png)',
                 backgroundSize: 'cover',
@@ -1271,57 +1269,43 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.5 }}
               transition={{ duration: 0.6, delay: 0.15, ease: [0.2, 0.8, 0.2, 1] }}
-              whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
+              whileHover={{ scale: 1.01, transition: { duration: 0.25, ease: 'easeOut' } }}
             >
-              {/* 光带效果 */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 overflow-hidden rounded-[20px]">
-                <div 
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-600 ease-out"
-                  style={{ transform: "skewX(-45deg)", width: "200%" }}
-                />
-              </div>
+              {/* 图片暗遮罩 */}
+              <div className="absolute inset-0 bg-black/30" />
             </motion.div>
-            {/* 绿色卡片 */}
+            {/* Faster - text block (no background) */}
             <motion.div 
-              className="absolute w-[756px] h-[165px] top-[40px] left-[375px] rounded-[20px] group cursor-pointer animate-float-gentle-delayed"
+              className="absolute w-[756px] h-[165px] top-[40px] left-[375px] cursor-default"
               initial={{ opacity: 0, y: 24, scale: 0.98 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.5 }}
               transition={{ duration: 0.6, delay: 0.24, ease: [0.2, 0.8, 0.2, 1] }}
-              whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
-              style={{ 
-                boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
-                filter: "drop-shadow(0 16px 40px rgba(0,0,0,0.2))"
-              }}
             >
-              <div className="w-[756px] bg-[#f0f3ff] overflow-hidden absolute h-[165px] top-0 left-0 rounded-[20px]">
-                <div className="relative w-[762px] h-[161px] top-[2px] -left-1 bg-gradient-to-br from-green-400 to-green-600" />
-              </div>
               <div className="absolute inset-0 p-4 flex items-center">
-                <div className="w-1/2">
-                  <h3 className="text-2xl font-normal text-white mb-2">{t.sections.difference.cards.flexible.title}</h3>
+                <div className="w-full">
+                  {(() => {
+                    const raw = t.sections.difference.cards.flexible.description || '';
+                    const cleaned = raw.replace(/^Value \(technical\):\s*/i, '').replace(/^价值（技术语气）[:：]\s*/, '');
+                    const parts = cleaned.split(/Basis[:：]|依据（技术点）[:：]/i);
+                    const valueLine = (parts[0] || '').trim();
+                    const basisLine = (parts[1] || '').trim();
+                    return (
+                      <div>
+                        <h3 className="text-2xl md:text-3xl font-semibold text-white mb-1">{t.sections.difference.cards.flexible.title}</h3>
+                        <p className="text-white/90 leading-relaxed mb-1">{valueLine}</p>
+                        <p className="text-white/60 leading-relaxed">{basisLine}</p>
+                      </div>
+                    );
+                  })()}
                 </div>
-                <div className="w-1/2 pl-3">
-                  <p className="text-white text-sm leading-relaxed">{t.sections.difference.cards.flexible.description}</p>
-                </div>
-              </div>
-              {/* Green Icon */}
-              <div className="absolute top-3 left-3 w-12 h-8 bg-green-500 rounded-full flex items-center justify-center">
-                <div className="w-4 h-4 bg-white rounded-full transform transition-transform duration-300 group-hover:-translate-y-1 group-hover:rotate-2"></div>
-              </div>
-              {/* 光带效果 */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 overflow-hidden rounded-[20px]">
-                <div 
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/35 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-600 ease-out"
-                  style={{ transform: "skewX(-45deg)", width: "200%" }}
-                />
               </div>
             </motion.div>
 
             {/* Products teams love to use - Blue Card (Center Right) */}
             {/* 灰色背景块 */}
             <motion.div 
-              className="absolute w-[280px] h-[165px] top-[230px] left-[851px] rounded-[20px] group cursor-pointer overflow-hidden border-2 border-white/20 ring-1 ring-white/20 animate-float-gentle-slow"
+              className="absolute w-[280px] h-[165px] top-[230px] left-[851px] rounded-xl group cursor-pointer overflow-hidden border-2 border-white/20 ring-1 ring-white/10 hover:ring-white/20"
               style={{
                 backgroundImage: 'url(/credible-meerkat.png)',
                 backgroundSize: 'cover',
@@ -1333,57 +1317,43 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.5 }}
               transition={{ duration: 0.6, delay: 0.33, ease: [0.2, 0.8, 0.2, 1] }}
-              whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
+              whileHover={{ scale: 1.01, transition: { duration: 0.25, ease: 'easeOut' } }}
             >
-              {/* 光带效果 */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 overflow-hidden rounded-[20px]">
-                <div 
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-600 ease-out"
-                  style={{ transform: "skewX(-45deg)", width: "200%" }}
-                />
-              </div>
+              {/* 图片暗遮罩 */}
+              <div className="absolute inset-0 bg-black/30" />
             </motion.div>
-            {/* 蓝色卡片 */}
+            {/* Credible - text block (no background) */}
             <motion.div 
-              className="absolute w-[756px] h-[165px] top-[230px] left-[35px] rounded-[20px] group cursor-pointer animate-float-gentle"
+              className="absolute w-[756px] h-[165px] top-[230px] left-[35px] cursor-default"
               initial={{ opacity: 0, y: 24, scale: 0.98 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.5 }}
               transition={{ duration: 0.6, delay: 0.42, ease: [0.2, 0.8, 0.2, 1] }}
-              whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
-              style={{ 
-                boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
-                filter: "drop-shadow(0 16px 40px rgba(0,0,0,0.2))"
-              }}
             >
-              <div className="w-[756px] bg-[#f0f3ff] overflow-hidden absolute h-[165px] top-0 left-0 rounded-[20px]">
-                <div className="relative w-[762px] h-[161px] top-[2px] -left-1 bg-gradient-to-br from-blue-500 to-blue-700" />
-              </div>
               <div className="absolute inset-0 p-4 flex items-center">
-                <div className="w-1/2">
-                  <p className="text-white text-sm leading-relaxed">{t.sections.difference.cards.products.description}</p>
+                <div className="w-full">
+                  {(() => {
+                    const raw = t.sections.difference.cards.products.description || '';
+                    const cleaned = raw.replace(/^Value \(technical\):\s*/i, '').replace(/^价值（技术语气）[:：]\s*/, '');
+                    const parts = cleaned.split(/Basis[:：]|依据（技术点）[:：]/i);
+                    const valueLine = (parts[0] || '').trim();
+                    const basisLine = (parts[1] || '').trim();
+                    return (
+                      <div>
+                        <h3 className="text-2xl md:text-3xl font-semibold text-white mb-1">{t.sections.difference.cards.products.title}</h3>
+                        <p className="text-white/90 leading-relaxed mb-1">{valueLine}</p>
+                        <p className="text-white/60 leading-relaxed">{basisLine}</p>
+                      </div>
+                    );
+                  })()}
                 </div>
-                <div className="w-1/2 pl-3 flex justify-end">
-                  <h3 className="text-2xl font-normal text-white mb-2">{t.sections.difference.cards.products.title}</h3>
-                </div>
-              </div>
-              {/* Heart Icon */}
-              <div className="absolute top-3 right-3 w-12 h-9 flex items-center justify-center">
-                <div className="w-8 h-6 bg-white rounded-t-full transform rotate-45 transition-transform duration-300 group-hover:-translate-y-1 group-hover:rotate-2" style={{borderRadius: '50% 50% 50% 50% / 60% 60% 40% 40%'}}></div>
-              </div>
-              {/* 光带效果 */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 overflow-hidden rounded-[20px]">
-                <div 
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/35 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-600 ease-out"
-                  style={{ transform: "skewX(-45deg)", width: "200%" }}
-                />
               </div>
             </motion.div>
 
             {/* Fast time to value - Pink Card (Bottom Left) */}
             {/* 灰色背景块 */}
             <motion.div 
-              className="absolute w-[280px] h-[165px] top-[420px] left-[35px] rounded-[20px] group cursor-pointer overflow-hidden border-2 border-white/20 ring-1 ring-white/20 animate-float-gentle-delayed"
+              className="absolute w-[280px] h-[165px] top-[420px] left-[35px] rounded-xl group cursor-pointer overflow-hidden border-2 border-white/20 ring-1 ring-white/10 hover:ring-white/20"
               style={{
                 backgroundImage: 'url(/frictionless-dog.png)',
                 backgroundSize: 'cover',
@@ -1395,51 +1365,36 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.5 }}
               transition={{ duration: 0.6, delay: 0.51, ease: [0.2, 0.8, 0.2, 1] }}
-              whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
+              whileHover={{ scale: 1.01, transition: { duration: 0.25, ease: 'easeOut' } }}
             >
-              {/* 光带效果 */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 overflow-hidden rounded-[20px]">
-                <div 
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-600 ease-out"
-                  style={{ transform: "skewX(-45deg)", width: "200%" }}
-                />
-              </div>
+              {/* 图片暗遮罩 */}
+              <div className="absolute inset-0 bg-black/30" />
             </motion.div>
-            {/* 粉色卡片 */}
+            {/* Frictionless - text block (no background) */}
             <motion.div 
-              className="absolute w-[756px] h-[165px] top-[420px] left-[375px] rounded-[20px] group cursor-pointer animate-float-gentle-slow"
+              className="absolute w-[756px] h-[165px] top-[420px] left-[375px] cursor-default"
               initial={{ opacity: 0, y: 24, scale: 0.98 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.5 }}
               transition={{ duration: 0.6, delay: 0.60, ease: [0.2, 0.8, 0.2, 1] }}
-              whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
-              style={{ 
-                boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
-                filter: "drop-shadow(0 16px 40px rgba(0,0,0,0.2))"
-              }}
             >
-              <div className="w-[756px] bg-[#f0f3ff] overflow-hidden absolute h-[165px] top-0 left-0 rounded-[20px]">
-                <div className="relative w-[762px] h-[161px] top-[2px] -left-1 bg-gradient-to-br from-pink-400 to-pink-600" />
-              </div>
               <div className="absolute inset-0 p-4 flex items-center">
-                <div className="w-1/2">
-                  <h3 className="text-2xl font-normal text-white mb-2">{t.sections.difference.cards.fastValue.title}</h3>
+                <div className="w-full">
+                  {(() => {
+                    const raw = t.sections.difference.cards.fastValue.description || '';
+                    const cleaned = raw.replace(/^Value \(technical\):\s*/i, '').replace(/^价值（技术语气）[:：]\s*/, '');
+                    const parts = cleaned.split(/Basis[:：]|依据（技术点）[:：]/i);
+                    const valueLine = (parts[0] || '').trim();
+                    const basisLine = (parts[1] || '').trim();
+                    return (
+                      <div>
+                        <h3 className="text-2xl md:text-3xl font-semibold text-white mb-1">{t.sections.difference.cards.fastValue.title}</h3>
+                        <p className="text-white/90 leading-relaxed mb-1">{valueLine}</p>
+                        <p className="text-white/60 leading-relaxed">{basisLine}</p>
+                      </div>
+                    );
+                  })()}
                 </div>
-                <div className="w-1/2 pl-3">
-                  <p className="text-white text-sm leading-relaxed">{t.sections.difference.cards.fastValue.description}</p>
-                </div>
-              </div>
-              {/* Pink Icon */}
-              <div className="absolute top-3 left-3 w-12 h-8">
-                <div className="w-9 h-4 bg-pink-300 rounded-full transform transition-transform duration-300 group-hover:-translate-y-1 group-hover:rotate-2"></div>
-                <div className="w-7 h-4 bg-pink-400 rounded-full mt-1 ml-2 transform transition-transform duration-300 group-hover:-translate-y-1 group-hover:rotate-2"></div>
-              </div>
-              {/* 光带效果 */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 overflow-hidden rounded-[20px]">
-                <div 
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/35 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-600 ease-out"
-                  style={{ transform: "skewX(-45deg)", width: "200%" }}
-                />
               </div>
             </motion.div>
           </div>
@@ -1450,26 +1405,7 @@ export default function Home() {
 
       {/* Products Section - Stacked Cards */}
       <section id="products" className="relative bg-[rgb(0,52,50)] -mt-px" data-theme="products" data-section="what-we-do" data-category="product">
-        {/* Scrolling Text Section */}
-        <div className="relative overflow-hidden py-16 bg-[rgb(0,52,50)] -mt-px">
-          <div className="whitespace-nowrap">
-            {/* First Row - Moving Right */}
-            <div className="flex animate-scroll-right text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-bold text-cyan-custom opacity-80 mb-4">
-              {Array.from({length: 6}, (_, i) => (
-                <span key={i} className="mx-4 sm:mx-6 md:mx-8">{t.sections.whatWeDo.scrollingText1}</span>
-              ))}
-            </div>
-            {/* Second Row - Moving Left */}
-            <div className="flex animate-scroll-left text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-bold text-[#9ef894] opacity-80">
-              {Array.from({length: 6}, (_, i) => (
-                <span key={i} className="mx-4 sm:mx-6 md:mx-8">{t.sections.whatWeDo.scrollingText2}</span>
-              ))}
-            </div>
-          </div>
-          
-          {/* Separator Line */}
-          <div className="mt-12 mx-auto w-4/5 h-px bg-white opacity-30"></div>
-        </div>
+        {/* Scrolling Text removed here to avoid duplication; kept under pricing */}
       </section>
 
 
@@ -1478,9 +1414,7 @@ export default function Home() {
       {/* Value Section */}
       <section id="value-for-user" className="py-20 bg-[rgb(0,52,50)]" data-theme="value-for-user" data-section="value-overview" data-category="value">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">{t.sections.valueForUser.title}</h2>
-          </div>
+          {/* Title removed per request: Value for Teams and the Business */}
 
           {/* Mobile Layout - Icon Badge Grid */}
           <div className="grid grid-cols-1 gap-4 max-w-sm mx-auto sm:hidden">
@@ -1559,7 +1493,7 @@ export default function Home() {
 
             {/* Trusted - Card #4 - 15% Increased */}
             <article role="article" className="group rounded-3xl p-6 sm:p-7 shadow-xl flex flex-col gap-3 cursor-pointer bg-white/5 border border-white/10 backdrop-blur-md">
-              <div className="shrink-0 w-12 h-12 rounded-full bg-[#013432]/20 ring-2 ring-[#013432]/40 flex items-center justify-center text-[#013432] text-lg">★</div>
+              <div className="shrink-0 w-12 h-12 rounded-full bg-white/10 ring-2 ring-[#9ef894]/50 flex items-center justify-center text-[#9ef894] text-lg">★</div>
               <h3 className="text-xl sm:text-2xl lg:text-[26px] leading-snug break-words hyphens-auto text-white font-bold">{t.sections.value.cards.trusted.title}</h3>
               <div className="mt-auto">
                 <h4 className="text-base sm:text-lg font-semibold text-white/90 mb-1">{t.sections.value.cards.trusted.subtitle}</h4>
@@ -1574,7 +1508,7 @@ export default function Home() {
       <section id="pricing" className="min-h-screen py-12 lg:py-16 bg-[rgb(0,52,50)] -mt-px" data-theme="pricing" data-section="pricing-overview" data-category="conversion">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-6 sm:mb-16">
-            <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white mb-2 sm:mb-6">{t.sections.pricing.title}</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 sm:mb-8 font-lora">{t.sections.pricing.title}</h2>
             <p className="text-base sm:text-xl text-white opacity-90 max-w-3xl mx-auto">
               {t.sections.pricing.subtitle}
             </p>
@@ -1670,9 +1604,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* White Separator Line */}
-      <div className="bg-[rgb(0,52,50)] py-6 lg:py-8">
-        <div className="mx-auto w-4/5 h-px bg-white opacity-30"></div>
+      {/* Soft Scrolling Text under Pricing */}
+      <div className="relative overflow-hidden bg-[rgb(0,52,50)] py-10 -mt-px">
+        <div className="hidden md:block pointer-events-none">
+          <div
+            className="whitespace-nowrap animate-scroll-right font-bold tracking-wide text-white opacity-20 drop-shadow-sm text-5xl lg:text-6xl"
+            style={{ ['--duration' as any]: '50s' }}
+          >
+            {Array.from({ length: 6 }, (_, i) => (
+              <React.Fragment key={i}>
+                <span className="mx-8">{t.sections.whatWeDo.scrollingText1}</span>
+                <span className="mx-8 text-[#9ef894]">{t.sections.whatWeDo.scrollingText2}</span>
+              </React.Fragment>
+            ))}
+          </div>
+        </div>
       </div>
 
       {/* About Section */}
@@ -1697,7 +1643,7 @@ export default function Home() {
               <div className="text-center space-y-8 sm:space-y-10 md:space-y-12">
                 {/* About Us title - centered */}
                 <div className="mb-4 sm:mb-6 md:mb-8">
-                  <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">{t.sections.aboutUs.title}</h2>
+                  <h2 className="text-3xl sm:text-4xl font-bold font-lora">{t.sections.aboutUs.title}</h2>
                 </div>
                 
                 {/* First section - centered */}
@@ -1794,7 +1740,7 @@ export default function Home() {
       {/* FAQ (compact) */}
       <section id="faq" className="bg-[rgb(0,52,50)] py-12 sm:py-16">
         <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 sm:mb-8 text-center">{t.faq?.title || (language === 'zh' ? '常见问题' : 'FAQ')}</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 sm:mb-8 text-center font-lora">{t.faq?.title || (language === 'zh' ? '常见问题' : 'FAQ')}</h2>
           <div className="space-y-3">
             {t.faq?.groups
               ?.flatMap((g) => g.items)
@@ -1821,7 +1767,7 @@ export default function Home() {
       <section id="contact" className="py-8 sm:py-10 bg-[rgb(0,52,50)] text-white" data-theme="contact" data-section="contact-form" data-category="conversion">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-10">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-4">{t.contact.title}</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8 font-lora">{t.contact.title}</h2>
             <p className="text-lg sm:text-xl opacity-90 max-w-3xl mx-auto">
               {t.contact.subtitle}
             </p>
