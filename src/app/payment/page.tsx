@@ -64,7 +64,7 @@ export default function Payment() {
       <div className="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-12">
         {/* Page Title */}
         <div className="text-center mb-4 sm:mb-12">
-          <h1 className="text-lg sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-1 sm:mb-4">
+          <h1 className="text-lg sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-1 sm:mb-4 font-lora">
             Complete Your Purchase
           </h1>
           <p className="text-xs sm:text-lg text-white opacity-90">

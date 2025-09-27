@@ -110,8 +110,17 @@ export default function ArticleDetail() {
   const renderMarkdown = (raw: string): string => {
     const linkClass = 'text-[#9ef894] underline hover:text-[#7dd87d] transition-colors';
 
-    // Normalize line endings
-    let text = raw.replace(/\r\n?/g, '\n');
+    // 1) Unescape common JSON-escaped sequences that may appear in stored content
+    //    Example: "\n" -> newline, \" -> ", \\ -> \
+    let text = raw
+      .replace(/\\n/g, '\n')
+      .replace(/\\t/g, '\t')
+      .replace(/\\"/g, '"')
+      // Process \\ last to avoid interfering with above replacements
+      .replace(/\\\\/g, '\\');
+
+    // 2) Normalize line endings
+    text = text.replace(/\r\n?/g, '\n');
 
     // Convert [text](url). Keep in-page anchors (#...) without target=_blank
     text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_m, label, url) => {
@@ -205,6 +214,23 @@ export default function ArticleDetail() {
     return html.join('\n');
   };
 
+  // 从原始 Markdown 抽取目录（H2/H3）
+  const extractToc = (raw: string): { level: number; text: string; id: string }[] => {
+    const toc: { level: number; text: string; id: string }[] = [];
+    const text = raw.replace(/\\n/g, '\n').replace(/\r\n?/g, '\n');
+    const lines = text.split('\n');
+    const slugify = (s: string) => s.trim().toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-');
+    for (let i = 0; i < lines.length; i += 1) {
+      const m = lines[i].match(/^(#{2,3})\s+(.+)$/);
+      if (m) {
+        const level = m[1].length; // 2 or 3
+        const text = m[2].trim();
+        toc.push({ level, text, id: slugify(text) });
+      }
+    }
+    return toc;
+  };
+
   return (
     <div className="min-h-screen bg-[rgb(0,52,50)]">
       {/* JSON-LD: Breadcrumb（仅元信息，不渲染 UI）*/}
@@ -250,7 +276,7 @@ export default function ArticleDetail() {
           </div>
 
           {/* Article Title */}
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight font-lora">
             {getArticleTitle(article)}
           </h1>
 
@@ -281,20 +307,33 @@ export default function ArticleDetail() {
       <section className="pb-16 px-4">
         <div className="max-w-5xl mx-auto">
           <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 md:p-12 border border-white/10 shadow-2xl">
-            <div className="prose prose-xl prose-invert max-w-none">
-              {(() => {
-                const raw = getArticleContent(article);
-                // Remove explicit CTA label lines; we'll render CTA via links inside content if any
-                const cleaned = raw.replace(/^CTA:?\s*$/gim, '');
-                const html = renderMarkdown(cleaned);
-                return (
-                  <div
-                    className="text-white/90 leading-relaxed"
-                    dangerouslySetInnerHTML={{ __html: html }}
-                  />
-                );
-              })()}
-            </div>
+            {(() => {
+              const raw = getArticleContent(article);
+              const cleaned = raw.replace(/^CTA:?\s*$/gim, '');
+              const toc = extractToc(cleaned);
+              const html = renderMarkdown(cleaned);
+              return (
+                <>
+                  {toc.length > 0 && (
+                    <nav aria-label={language === 'zh' ? '目录' : 'Table of contents'} className="mb-10 rounded-2xl border border-white/10 bg-white/5 p-5">
+                      <h2 className="text-white/90 font-semibold mb-3 text-lg">{language === 'zh' ? '目录' : 'Contents'}</h2>
+                      <ul className="space-y-2">
+                        {toc.map((t, idx) => (
+                          <li key={idx} className={t.level === 2 ? 'pl-0' : 'pl-4'}>
+                            <a href={`#${t.id}`} className="text-[#9ef894] hover:text-[#7dd87d] underline">
+                              {t.text}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </nav>
+                  )}
+                  <div className="prose prose-xl prose-invert max-w-none">
+                    <div className="text-white/90 leading-relaxed" dangerouslySetInnerHTML={{ __html: html }} />
+                  </div>
+                </>
+              );
+            })()}
           </div>
 
           {/* Enhanced Share Actions - 仅在客户端渲染，避免 SSR/CSR href 不一致 */}

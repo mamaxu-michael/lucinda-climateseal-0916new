@@ -7,40 +7,44 @@ import { translations, DEFAULT_LANGUAGE } from '@/lib/i18n';
 const zh = translations.zh.faq;
 const en = translations.en.faq;
 
-export const metadata: Metadata = {
-  title: zh.title,
-  description: zh.seo.description,
-  alternates: {
-    canonical: '/faq',
-    languages: {
-      en: '/faq?lang=en',
-      zh: '/faq?lang=zh',
+// Dynamic metadata so the browser tab matches current language
+export async function generateMetadata({ searchParams }: { searchParams: { lang?: string } }): Promise<Metadata> {
+  const lang = (searchParams?.lang || DEFAULT_LANGUAGE) as 'en' | 'zh';
+  const faq = lang === 'en' ? en : zh;
+  return {
+    title: faq.title,
+    description: faq.seo.description,
+    alternates: {
+      canonical: '/faq',
+      languages: {
+        en: '/faq?lang=en',
+        zh: '/faq?lang=zh',
+      },
     },
-  },
-  openGraph: {
-    title: zh.seo.title,
-    description: zh.seo.description,
-  },
-  twitter: {
-    card: 'summary',
-    title: zh.seo.title,
-    description: zh.seo.description,
-  },
-  robots: zh.seo.indexable ? undefined : { index: false, follow: false },
-};
-
-// 用于获取多语言文案（页面为服务端组件，折叠为客户端组件）
-function mapFaqToClientItems(grouped: { name: string; items: { q: string; a: string[] }[] }) {
-  return grouped.items.map((it) => ({ question: it.q, answer: it.a.join('\n') }));
+    openGraph: {
+      title: faq.seo.title,
+      description: faq.seo.description,
+    },
+    twitter: {
+      card: 'summary',
+      title: faq.seo.title,
+      description: faq.seo.description,
+    },
+    robots: faq.seo.indexable ? undefined : { index: false, follow: false },
+  };
 }
 
-export default function FAQPage() {
+// 页面为服务端组件，实际分组渲染放在客户端组件
+
+export default function FAQPage({ searchParams }: { searchParams: { lang?: string } }) {
+  const lang = (searchParams?.lang || DEFAULT_LANGUAGE) as 'en' | 'zh';
+  const dict = lang === 'en' ? en : zh;
 
   // JSON-LD（FAQPage）
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: zh.groups
+    mainEntity: (lang === 'en' ? en.groups : zh.groups)
       .flatMap((g) => g.items)
       .map((it) => ({
         '@type': 'Question',
@@ -54,14 +58,10 @@ export default function FAQPage() {
       <Script id="jsonld-faq" type="application/ld+json" strategy="afterInteractive">
         {JSON.stringify(jsonLd)}
       </Script>
-      <div className="container mx-auto px-4 py-16">
-        <h1 className="text-4xl font-bold text-center mb-8 text-gray-900">{zh.title}</h1>
-        {/* 客户端块，依赖语言上下文 */}
-        {/** 将分组展开为单一列表传入折叠组件，客户端依据语言切换显示 **/}
-        <FAQClient
-          zh={zh.groups.flatMap(mapFaqToClientItems)}
-          en={en.groups.flatMap(mapFaqToClientItems)}
-        />
+      <div className="container mx-auto px-4 pt-28 sm:pt-32 pb-16">
+        <h1 className="text-4xl font-bold text-center mb-8 text-gray-900">{dict.title}</h1>
+        {/* 客户端块，按分组渲染 */}
+        <FAQClient zhGroups={zh.groups} enGroups={en.groups} />
       </div>
     </div>
   );

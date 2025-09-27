@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Lora, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -7,14 +7,16 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import Script from 'next/script';
 import TitleUpdater from "@/components/TitleUpdater";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const lora = Lora({
+  variable: "--font-lora",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const sourceSansPro = Source_Sans_3({
+  variable: "--font-source-sans",
   subsets: ["latin"],
+  weight: ["300", "400", "600", "700"],
 });
 
 const googleVerification = process.env.NEXT_PUBLIC_GSC_VERIFICATION as string | undefined;
@@ -23,10 +25,10 @@ const bingVerification = process.env.NEXT_PUBLIC_BING_VERIFICATION as string | u
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://climate-seal.com"),
   title: {
-    default: "AI Agent for Product Carbon Footprint Accounting & Assurance | Climate Seal",
+    default: "AI Carbon Footprint Platform | Audit-Ready PCF in Hours | Climate Seal",
     template: "%s | Climate Seal"
   },
-  description: "AI Agent for product carbon footprint automation. Automated LCA calculation & SBTi report generation. Scope 1/2/3 emissions analysis with intelligent data processing. Zero-expertise carbon accounting.",
+  description: "AI agent for Product Carbon Footprint (PCF) Accounting and Assurance. Parse BOMs, auto-build LCAs, pre-verify evidence and export ISO 14067/GHG-aligned reports. Slash time and cost with no expertise needed. Deploy as secure SaaS or fully on-premise. Free one report to start your decarbonization journey.",
   robots: {
     index: process.env.NODE_ENV === 'production',
     follow: process.env.NODE_ENV === 'production'
@@ -74,22 +76,22 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Climate Seal",
-    title: "Climate Seal",
-    description: "专注于环保与气候合规的数字化解决方案与产品碳足迹工具",
+    title: "AI Carbon Footprint Platform | Audit-Ready PCF in Hours | Climate Seal",
+    description: "AI agent for Product Carbon Footprint (PCF) Accounting and Assurance. Parse BOMs, auto-build LCAs, pre-verify evidence and export ISO 14067/GHG-aligned reports. Slash time and cost with no expertise needed. Deploy as secure SaaS or fully on-premise. Free one report to start your decarbonization journey.",
     url: "/",
     images: [
       {
         url: "/logo.jpg",
         width: 1200,
         height: 630,
-        alt: "Climate Seal"
+        alt: "Climate Seal - AI Carbon Footprint Platform"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "Climate Seal",
-    description: "专注于环保与气候合规的数字化解决方案与产品碳足迹工具",
+    title: "AI Carbon Footprint Platform | Audit-Ready PCF in Hours | Climate Seal",
+    description: "AI agent for Product Carbon Footprint (PCF) Accounting and Assurance. Parse BOMs, auto-build LCAs, pre-verify evidence and export ISO 14067/GHG-aligned reports. Slash time and cost with no expertise needed.",
     images: ["/logo.jpg"],
     site: "@ClimateSeal",
     creator: "@ClimateSeal"
@@ -129,7 +131,44 @@ export default function RootLayout({
             name: "Climate Seal",
             url: (process.env.NEXT_PUBLIC_APP_URL || "https://climate-seal.com"),
             logo: new URL("/logo.jpg", process.env.NEXT_PUBLIC_APP_URL || "https://climate-seal.com").toString(),
-            sameAs: []
+            description: "AI agent for Product Carbon Footprint (PCF) Accounting and Assurance. Parse BOMs, auto-build LCAs, pre-verify evidence and export ISO 14067/GHG-aligned reports.",
+            foundingDate: "2024",
+            sameAs: [
+              "https://twitter.com/ClimateSeal",
+              "https://linkedin.com/company/climate-seal"
+            ],
+            contactPoint: {
+              "@type": "ContactPoint",
+              contactType: "customer service",
+              email: "contact@climate-seal.com"
+            }
+          })}
+        </Script>
+        {/* SoftwareApplication JSON-LD */}
+        <Script id="software-jsonld" type="application/ld+json" strategy="afterInteractive">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            name: "Climate Seal AI Platform",
+            applicationCategory: "BusinessApplication",
+            operatingSystem: "Web",
+            description: "AI agent for Product Carbon Footprint (PCF) Accounting and Assurance. Parse BOMs, auto-build LCAs, pre-verify evidence and export ISO 14067/GHG-aligned reports.",
+            url: (process.env.NEXT_PUBLIC_APP_URL || "https://climate-seal.com"),
+            offers: {
+              "@type": "Offer",
+              price: "0",
+              priceCurrency: "USD",
+              description: "Free one report to start your decarbonization journey"
+            },
+            featureList: [
+              "AI-powered carbon footprint calculation",
+              "Automated LCA generation",
+              "ISO 14067 compliance",
+              "GHG Protocol alignment",
+              "Audit-ready reporting",
+              "BOM parsing",
+              "Evidence pre-verification"
+            ]
           })}
         </Script>
         {/* Google Analytics 4 */}
@@ -178,12 +217,12 @@ export default function RootLayout({
         </Script>
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${lora.variable} ${sourceSansPro.variable} antialiased bg-[rgb(0,52,50)]`}
       >
         <LanguageProvider>
           <TitleUpdater />
           <Navbar />
-          <main className="min-h-screen">
+          <main className="min-h-screen bg-[rgb(0,52,50)]">
             {children}
           </main>
           <Footer />

@@ -15,7 +15,7 @@ const Navbar = () => {
 
   const navItems = [
     { name: t.nav.home, href: '#home', route: '/' },
-    { name: t.nav.products, href: '#products', route: '/' },
+    { name: t.nav.products, href: '#advantages', route: '/' },
     { name: t.nav.resources, href: '/resources', route: '/resources', isLink: true },
     { name: t.nav.pricing, href: '#pricing', route: '/' },
     { name: t.nav.about, href: '#about', route: '/' },
@@ -75,8 +75,6 @@ const Navbar = () => {
                 </button>
               );
             })}
-            {/* Language Switcher */}
-            <LanguageSwitcher />
           </div>
 
           {/* Mobile menu button */}
@@ -123,11 +121,6 @@ const Navbar = () => {
                   </button>
                 );
               })}
-              <div className="border-t border-teal-700 pt-3 mt-3">
-                <div className="flex items-center justify-center px-3 py-2">
-                  <LanguageSwitcher />
-                </div>
-              </div>
             </div>
           </div>
         )}

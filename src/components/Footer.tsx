@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { LanguageSwitcher } from '@/contexts/LanguageContext';
 
 const Footer = () => {
   return (
@@ -6,6 +7,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="text-sm">© {new Date().getFullYear()} Climate Seal</div>
         <div className="flex items-center gap-6">
+          <LanguageSwitcher />
           <Link href="/privacy" className="text-white/80 hover:text-white text-sm" aria-label="Privacy Policy">
             Privacy Policy
           </Link>

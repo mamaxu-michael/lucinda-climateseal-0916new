@@ -18,7 +18,7 @@ export default function PrivacyPolicy() {
             >
               ← {t.privacy?.backToHome || '返回首页'}
             </Link>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 font-lora">
               {t.privacy?.title || 'Privacy Policy'}
             </h1>
             <p className="text-xl text-white/80">

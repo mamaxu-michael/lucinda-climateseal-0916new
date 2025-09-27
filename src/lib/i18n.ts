@@ -694,7 +694,7 @@ export const translations: Record<Language, TranslationData> = {
           brandOwner: {
             brandAnalyzer: {
               title: 'Supplier Intake & Dispatch',
-              description: 'Push tasks and AI tools across your entire supply chain—suppliers run zero-friction AI calculations at no additional cost, reducing supplier burden.'
+              description: 'Push tasks and AI tools across your supply chain to capture Scope 3 emissions data at source—zero‑friction supplier workflows reduce burden and cost.'
             },
             scopeTracker: {
               title: 'Supplier Risk & Scoring',
@@ -730,19 +730,19 @@ export const translations: Record<Language, TranslationData> = {
         }
       },
       difference: {
-        title: 'The Climate Seal Difference',
+        title: 'The Unmatched Advantages',
         cards: {
           flexible: {
             title: 'Faster',
-            description: 'Auto-map rules & factors → batch PCF modeling from BOM/energy/logistics → one-click buyer/customs reports.'
+            description: 'Value (technical): Deterministic pipeline from BOM parsing to model build—predictable hours‑level delivery. Basis: Hierarchical BOM parsing → bulk emission‑factor mapping → rule‑bound system boundary templates → one‑click report render.'
           },
           products: {
             title: 'Credible', 
-            description: 'Field-level 0-100 quality score, auto-fix hints, uncertainty bands; external cross-checks & evidence packs with minute-level confidence.'
+            description: 'Value (technical): Audit‑ready outputs with quantified quality and traceability. Basis: DQR 0–100 scoring + uncertainty bands; external cross‑checks (3rd‑party/OSINT); factor lineage & provenance; verifier‑grade evidence pack.'
           },
           fastValue: {
             title: 'Frictionless',
-            description: 'A low-friction, low-cost pipeline for verification-grade supplier data—plug-and-play for SBTi and abatement planning.'
+            description: 'Value (technical): Low‑effort intake and governance—less rework, cleaner handoffs across roles. Basis: Guided intake with schema validation & unit normalization; rule‑locked category/boundary; role‑based tasking & reviewer queues; full audit trail.'
           }
         }
       },
@@ -1015,22 +1015,64 @@ export const translations: Record<Language, TranslationData> = {
       }
     },
     comparison: {
-      title: 'Why Choose Climate Seal AI?',
-      subtitle: 'Compare traditional approaches with our AI-powered solution',
-      aiAgent: {
-        title: 'AI Agent',
-        steps: '4\nSTEPS',
-        stepList: ['① Minimal Data', '② Confirm', '③ Send to Verifier', '④ Certification']
-      },
+      title: 'The Unmatched Advantages',
+      subtitle: 'Compare Climate Seal AI with traditional carbon accounting: we automate the heavy lifting, so your compliance and carbon targets stay on track.',
       consultant: {
-        title: 'Third Party Carbon Consultant + Carbon Accounting Software',
-        steps: '11\nSTEPS',
-        stepList: ['① Training', '② Doc + Reg Map', '③ Data Checklist', '④ Data Clean', '⑤ Gap Fill', '⑥ Build Model', '⑦ Factor Match', '⑧ Submit', '⑨ Issue List', '⑩ Corrections', '⑪ Certification']
+        title: 'Carbon Software + Experts',
+        time: '1-2 months',
+        steps: '11 steps',
+        stepList: [
+          'user training',
+          'building calculation models',
+          'document lookup & regulation mapping',
+          'manual emission factor matching',
+          'data collection checklist',
+          'submission to verifier',
+          'data structuring and cleansing',
+          'pre-audit issue list',
+          'manual data gap filling',
+          'supplementary corrections',
+          'verification and certification'
+        ]
       },
       traditional: {
-        title: 'Third Party Carbon Consultant',
-        steps: '12\nSTEPS',
-        stepList: ['① Kick-Off', '② Info Search', '③ Data Prep', '④ Clean + Interview', '⑤ Calc Model', '⑥ Factor Calc', '⑦ Draft Report', '⑧ Review', '⑨ Submit to Verifier', '⑩ Issue Feedback', '⑪ Info Correction', '⑫ Certification']
+        title: 'Traditional Consultancy',
+        time: '3-6 months',
+        steps: '12 steps',
+        cost: '$50K-100K',
+        team: '3-5 experts',
+        stepList: [
+          'kickoff and training',
+          'factor matching and calculation',
+          'information search & regulatory comparison',
+          'Draft report',
+          'data list preparation',
+          'internal review and revision',
+          'data cleaning and interviews',
+          'delivery to verifier',
+          'calculation model',
+          'pre-audit issue feedback',
+          'information supplementation and correction',
+          'verification and certification'
+        ]
+      },
+      aiAgent: {
+        title: 'Climate Seal AI Agent Platform',
+        time: '4 hours',
+        steps: '4 steps',
+        cost: '$100',
+        team: 'Just you',
+        stepList: [
+          'Upload BOM Data',
+          'AI Auto-Processing',
+          'Review & Confirm',
+          'Get Audit-Ready Report'
+        ]
+      },
+      savings: {
+        costReduction: '99%',
+        timeReduction: '95%',
+        expertiseRequired: '0'
       }
     },
     contact: {
@@ -1169,14 +1211,8 @@ export const translations: Record<Language, TranslationData> = {
       },
       groups: [
         {
-          name: 'Product',
+          name: 'How Climate Seal Works',
           items: [
-            {
-              q: 'What are some common use cases?',
-              a: [
-                'Brand tenders require suppliers to provide PCF documentation; exporting goods to other countries or regions necessitates disclosure of PCF. Scenarios such as carbon taxes, batteries, and DPP (Digital Product Passport) also rely on PCF as foundational support.'
-              ]
-            },
             {
               q: 'What does Climate Seal do? How is it different from traditional consulting?',
               a: [
@@ -1194,7 +1230,23 @@ export const translations: Record<Language, TranslationData> = {
               a: [
                 'From importing the three inputs to generating results takes approximately 1–2 hours; including risk assessment and corrections, the total time is about 2–4 hours. For supply chain carbon management, the timeline depends on supplier count and product complexity. We first cover the top 80% of emission contributors, then iterate on the long tail. Accuracy primarily depends on the completeness of BOM and energy consumption data, and the clarity of understanding of your operations.'
               ]
-            },
+            }
+          ]
+        },
+        {
+          name: 'Credibility & Audit Readiness',
+          items: [
+            {
+              q: 'Are the results reliable? Can they be audited/verified?',
+              a: [
+                'Aligned with ISO 14067, featuring built-in DQR scoring, risk analysis, uncertainty assessment, and data lineage. One-click export of audit packages supports third-party verification (SGS/BSI/TÜV, etc.).'
+              ]
+            }
+          ]
+        },
+        {
+          name: 'Methodology & Boundaries',
+          items: [
             {
               q: 'How to account for Scope 3 Category 1 (purchased goods and services)?',
               a: [
@@ -1202,11 +1254,16 @@ export const translations: Record<Language, TranslationData> = {
               ]
             },
             {
-              q: 'Are the results reliable? Can they be audited/verified?',
+              q: 'What are some common use cases?',
               a: [
-                'Aligned with ISO 14067, featuring built-in DQR scoring, risk analysis, uncertainty assessment, and data lineage. One-click export of audit packages supports third-party verification (SGS/BSI/TÜV, etc.).'
+                'Brand tenders require suppliers to provide PCF documentation; exporting goods to other countries or regions necessitates disclosure of PCF. Scenarios such as carbon taxes, batteries, and DPP (Digital Product Passport) also rely on PCF as foundational support.'
               ]
-            },
+            }
+          ]
+        },
+        {
+          name: 'Supply Chain & Data Intake',
+          items: [
             {
               q: 'Can BOMs be imported in bulk and automatically matched to factors?',
               a: [
@@ -1214,17 +1271,27 @@ export const translations: Record<Language, TranslationData> = {
               ]
             },
             {
-              q: 'What are the deliverables and formats? Can they meet CBAM/PEF/EPD/DPP requirements?',
-              a: [
-                'Outputs include PDF reports, machine-readable formats (CSV/JSON), and audit packages; can generate user-specified data formats and provide QR codes for easy display and reuse.'
-              ]
-            },
-            {
               q: 'What if suppliers are uncooperative or data is incomplete?',
               a: [
                 'Provide a lightweight supplier portal and AI advisor that supports invitations, task assignments, and automatic reminders. The AI advisor enables low-barrier data completion without brand-side training, constrains and validates data quality, and triggers recalculation once backfilled data meets quality standards. The entire process is traceable for auditing.'
               ]
-            },
+            }
+          ]
+        },
+        {
+          name: 'Deliverables & Formats',
+          items: [
+            {
+              q: 'What are the deliverables and formats? Can they meet CBAM/PEF/EPD/DPP requirements?',
+              a: [
+                'Outputs include PDF reports, machine-readable formats (CSV/JSON), and audit packages; can generate user-specified data formats and provide QR codes for easy display and reuse.'
+              ]
+            }
+          ]
+        },
+        {
+          name: 'Data Security & Ownership',
+          items: [
             {
               q: 'Who owns my data? Is it secure?',
               a: [
@@ -1234,7 +1301,7 @@ export const translations: Record<Language, TranslationData> = {
           ]
         },
         {
-          name: 'Pricing',
+          name: 'Pricing & Trials',
           items: [
             {
               q: 'How are pricing and trials arranged?',
@@ -1421,7 +1488,7 @@ export const translations: Record<Language, TranslationData> = {
         }
       },
       difference: {
-        title: 'Climate Seal的差异化优势',
+        title: '无与伦比的优势',
         cards: {
           flexible: {
             title: '更快速',
@@ -1706,22 +1773,64 @@ export const translations: Record<Language, TranslationData> = {
       }
     },
     comparison: {
-      title: '为什么选择Climate Seal AI？',
-      subtitle: '传统方法与我们AI驱动解决方案的对比',
-      aiAgent: {
-        title: 'AI智能体',
-        steps: '4\n步骤',
-        stepList: ['① 最少数据', '② 确认', '③ 发送验证方', '④ 认证']
-      },
+      title: 'Climate Seal的优势',
+      subtitle: '从数月到数小时，从昂贵到实惠',
       consultant: {
-        title: '第三方碳顾问 + 碳核算软件',
-        steps: '11\n步骤',
-        stepList: ['① 培训', '② 文档+法规映射', '③ 数据清单', '④ 数据清理', '⑤ 填补空缺', '⑥ 构建模型', '⑦ 因子匹配', '⑧ 提交', '⑨ 问题清单', '⑩ 修正', '⑪ 认证']
+        title: 'Carbon 软件 + 专家',
+        time: '1-2个月',
+        steps: '11个步骤',
+        stepList: [
+          '用户培训',
+          '建立计算模型',
+          '查阅文档与法规口径映射',
+          '手工因子匹配',
+          '数据收集清单',
+          '提交核验机构',
+          '数据结构化与清洗',
+          '预审问题清单',
+          '手动补齐数据缺口',
+          '补充修正',
+          '核验与出具证明'
+        ]
       },
       traditional: {
-        title: '第三方碳顾问',
-        steps: '12\n步骤',
-        stepList: ['① 启动', '② 信息搜索', '③ 数据准备', '④ 清理+访谈', '⑤ 计算模型', '⑥ 因子计算', '⑦ 报告草案', '⑧ 审查', '⑨ 提交验证方', '⑩ 问题反馈', '⑪ 信息修正', '⑫ 认证']
+        title: '传统方法',
+        time: '3-6个月',
+        steps: '12个步骤',
+        cost: '5-10万美元',
+        team: '3-5名专家',
+        stepList: [
+          '启动会议',
+          '团队培训',
+          '数据收集',
+          '数据清理',
+          '缺口分析',
+          '模型构建',
+          '因子匹配',
+          '计算过程',
+          '报告草案',
+          '审查流程',
+          '修正工作',
+          '最终认证'
+        ]
+      },
+      aiAgent: {
+        title: 'Climate Seal AI Agent Platform',
+        time: '4小时',
+        steps: '4个步骤',
+        cost: '100美元',
+        team: '只需你',
+        stepList: [
+          '上传BOM数据',
+          'AI自动处理',
+          '审查确认',
+          '获得认证报告'
+        ]
+      },
+      savings: {
+        costReduction: '99%',
+        timeReduction: '95%',
+        expertiseRequired: '0'
       }
     },
     contact: {
