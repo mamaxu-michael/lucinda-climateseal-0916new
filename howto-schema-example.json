@@ -1,0 +1,93 @@
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Calculate Product Carbon Footprint with Climate Seal AI",
+  "description": "Step-by-step guide to calculate audit-ready Product Carbon Footprint (PCF) using Climate Seal's AI platform in under 4 hours",
+  "image": "https://climate-seal.com/images/pcf-calculation-guide.jpg",
+  "totalTime": "PT4H",
+  "estimatedCost": {
+    "@type": "MonetaryAmount",
+    "currency": "USD",
+    "value": "100"
+  },
+  "supply": [
+    {
+      "@type": "HowToSupply",
+      "name": "Bill of Materials (BOM)"
+    },
+    {
+      "@type": "HowToSupply", 
+      "name": "Energy consumption data"
+    },
+    {
+      "@type": "HowToSupply",
+      "name": "Transportation data"
+    },
+    {
+      "@type": "HowToSupply",
+      "name": "Climate Seal AI Platform access"
+    }
+  ],
+  "tool": [
+    {
+      "@type": "HowToTool",
+      "name": "Climate Seal AI Platform"
+    },
+    {
+      "@type": "HowToTool",
+      "name": "ISO 14067 compliance checker"
+    },
+    {
+      "@type": "HowToTool",
+      "name": "GHG Protocol validator"
+    }
+  ],
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Upload Your Bill of Materials",
+      "text": "Upload your product's Bill of Materials (BOM) in Excel or CSV format. Include material quantities, suppliers, and specifications.",
+      "image": "https://climate-seal.com/images/step1-upload-bom.jpg",
+      "url": "https://climate-seal.com/resources/how-to-upload-bom"
+    },
+    {
+      "@type": "HowToStep", 
+      "position": 2,
+      "name": "AI Auto-Mapping",
+      "text": "Climate Seal AI automatically maps your materials to emission factors from our comprehensive database, including Ecoinvent, GaBi, and industry-specific datasets.",
+      "image": "https://climate-seal.com/images/step2-ai-mapping.jpg",
+      "url": "https://climate-seal.com/resources/ai-emission-factor-mapping"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Add Energy & Transportation Data",
+      "text": "Input your manufacturing energy consumption and transportation data. The AI will automatically calculate Scope 1, 2, and 3 emissions.",
+      "image": "https://climate-seal.com/images/step3-energy-transport.jpg",
+      "url": "https://climate-seal.com/resources/energy-transportation-calculation"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 4,
+      "name": "Review & Validate Results",
+      "text": "Review the AI-generated PCF results, validate against ISO 14067 standards, and make any necessary adjustments.",
+      "image": "https://climate-seal.com/images/step4-review-validate.jpg",
+      "url": "https://climate-seal.com/resources/pcf-validation-guide"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 5,
+      "name": "Export Audit-Ready Reports",
+      "text": "Export your PCF report in multiple formats: ISO 14067 compliance report, GHG Protocol format, or custom buyer requirements.",
+      "image": "https://climate-seal.com/images/step5-export-reports.jpg",
+      "url": "https://climate-seal.com/resources/audit-ready-reporting"
+    }
+  ],
+  "yield": "Audit-ready Product Carbon Footprint report compliant with ISO 14067 and GHG Protocol standards",
+  "author": {
+    "@type": "Organization",
+    "name": "Climate Seal",
+    "url": "https://climate-seal.com"
+  }
+}
