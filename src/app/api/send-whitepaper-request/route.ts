@@ -1,6 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
+type WhitepaperConfig = {
+  id: string;
+  downloadUrl?: string;
+  formRecipient?: string;
+  title?: string;
+};
+
+type ArticlesData = {
+  whitepapers?: WhitepaperConfig[];
+};
+
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
 export async function POST(request: NextRequest) {
@@ -29,8 +40,8 @@ export async function POST(request: NextRequest) {
     const path = await import('path');
     const filePath = path.join(process.cwd(), 'src', 'data', 'articles.json');
     const fileContents = fs.readFileSync(filePath, 'utf8');
-    const articlesData = JSON.parse(fileContents);
-    const whitepaper = articlesData.whitepapers?.find((w: any) => w.id === whitepaperId);
+    const articlesData = JSON.parse(fileContents) as ArticlesData;
+    const whitepaper = articlesData.whitepapers?.find((entry) => entry.id === whitepaperId);
     const downloadUrl = whitepaper?.downloadUrl || '#';
     const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://climate-seal.com';
     const fullDownloadUrl = downloadUrl.startsWith('http') ? downloadUrl : `${baseUrl}${downloadUrl}`;

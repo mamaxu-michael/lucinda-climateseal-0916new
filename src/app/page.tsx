@@ -32,6 +32,8 @@ export default function Home() {
   const [activePersona, setActivePersona] = useState<'carbonExpert' | 'brandOwner' | 'supplyChain'>('brandOwner');
   const [activeAIRole, setActiveAIRole] = useState<'carbonExpert' | 'brandOwner' | 'supplyChain'>('brandOwner');
   const [activeMobileCard, setActiveMobileCard] = useState<number>(-1);
+  type DurationStyle = React.CSSProperties & { '--duration'?: string };
+  const marqueeStyle: DurationStyle = { '--duration': '50s' };
 
   // Generate cards data for current role
   const getCardsForRole = (role: 'carbonExpert' | 'brandOwner' | 'supplyChain') => {
@@ -1657,7 +1659,7 @@ export default function Home() {
         <div className="hidden md:block pointer-events-none">
           <div
             className="whitespace-nowrap animate-scroll-right font-bold tracking-wide text-white opacity-20 drop-shadow-sm text-5xl lg:text-6xl"
-            style={{ ['--duration' as any]: '50s' }}
+            style={marqueeStyle}
           >
             {Array.from({ length: 6 }, (_, i) => (
               <React.Fragment key={i}>
