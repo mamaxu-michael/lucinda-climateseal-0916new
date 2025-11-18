@@ -7,9 +7,22 @@ import { translations, DEFAULT_LANGUAGE } from '@/lib/i18n';
 const zh = translations.zh.faq;
 const en = translations.en.faq;
 
+type FAQSearchParams = {
+  lang?: string;
+};
+
+type FAQPageProps = {
+  searchParams?: Promise<FAQSearchParams>;
+};
+
+const resolveLang = async (searchParams?: Promise<FAQSearchParams>): Promise<'en' | 'zh'> => {
+  const params = searchParams ? await searchParams : undefined;
+  return (params?.lang || DEFAULT_LANGUAGE) as 'en' | 'zh';
+};
+
 // Dynamic metadata so the browser tab matches current language
-export async function generateMetadata({ searchParams }: { searchParams: { lang?: string } }): Promise<Metadata> {
-  const lang = (searchParams?.lang || DEFAULT_LANGUAGE) as 'en' | 'zh';
+export async function generateMetadata({ searchParams }: FAQPageProps): Promise<Metadata> {
+  const lang = await resolveLang(searchParams);
   const faq = lang === 'en' ? en : zh;
   return {
     title: faq.title,
@@ -36,8 +49,8 @@ export async function generateMetadata({ searchParams }: { searchParams: { lang?
 
 // 页面为服务端组件，实际分组渲染放在客户端组件
 
-export default function FAQPage({ searchParams }: { searchParams: { lang?: string } }) {
-  const lang = (searchParams?.lang || DEFAULT_LANGUAGE) as 'en' | 'zh';
+export default async function FAQPage({ searchParams }: FAQPageProps) {
+  const lang = await resolveLang(searchParams);
   const dict = lang === 'en' ? en : zh;
 
   // JSON-LD（FAQPage）
