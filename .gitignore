@@ -1,0 +1,83 @@
+# Dependencies
+node_modules/
+.pnp/
+.yarn/
+.npm/
+jspm_packages/
+
+# Next.js / build
+.next/
+out/
+build/
+dist/
+coverage/
+.nyc_output/
+*.tsbuildinfo
+next-env.d.ts
+
+# Environment
+.env*
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+logs/
+*.log
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# OS / editor
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+.idea/
+.vscode/
+.vscode-test/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Caches
+.cache/
+.parcel-cache/
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+.eslintcache
+.node_repl_history
+
+# Deployment
+.vercel/
+
+# Local-only artifacts
+/tmp/
+/~/
+current-test.html
+preview.html
+scrolling-text-test.html
+seamless-scroll-test.html
+updated-layout.html
+value-test.html
+comparison-component-example.tsx
+business-plan-green-trust-infrastructure-10-slide-pitch-deck.pptx
+business-plan-green-trust-infrastructure-EN.pptx
+business-plan-green-trust-infrastructure-polished-EN.pptx
+business_plan_0414_english_translation.docx
+business_plan_0419_extracted.txt
+electricity_data_extracted.xlsx
+electricity_monthly_summary.csv
+# Local secrets and runtime admin data
+src/config/api-keys.js
+data/admin/*.json
+src/app/page.tsx.backup
