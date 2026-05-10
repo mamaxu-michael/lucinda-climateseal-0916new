@@ -26,15 +26,16 @@ function ensureWhitepaperStoreDir() {
 }
 
 export function listManagedWhitepapers(): ManagedWhitepaper[] {
-  ensureWhitepaperStoreDir();
-
   try {
     const content = fs.readFileSync(ADMIN_WHITEPAPERS_FILE, 'utf8');
     return JSON.parse(content) as ManagedWhitepaper[];
   } catch (error) {
-    if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
+    const code = (error as NodeJS.ErrnoException).code;
+
+    if (code === 'ENOENT' || code === 'ENOTDIR' || code === 'EACCES' || code === 'EROFS') {
       return [];
     }
+
     throw error;
   }
 }

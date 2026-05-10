@@ -118,7 +118,7 @@
       "id": "ai-carbon-operations-playbook",
       "title": "AI Carbon Operations Playbook: From BOM to Audit-Ready PCF in Weeks",
       "titleZh": "AI 碳运营行动手册：BOM 到可审计 PCF 的快速交付路径",
-      "thumbnail": "/images/whitepapers/ai-carbon-operations-playbook-cover.jpg",
+      "thumbnail": "/images/articles/Product-Carbon-Footprint.jpg",
       "intro": "How AI orchestration, automated factor matching, and dynamic QA reduce the carbon reporting cycle by 90%—with a proven rollout sequence and roles.",
       "introZh": "通过 AI 协同、自动因子匹配与动态质控，将碳报告周期缩短 90% 的方法与落地步骤，覆盖跨部门职责与时间表。",
       "whatYouGet": [
@@ -142,7 +142,7 @@
       "id": "cbam-proof-kit",
       "title": "CBAM Proof Kit: Evidence, Data Models, and Supplier Playbooks",
       "titleZh": "CBAM 合规工具包：证据链、数据模型与供应商手册",
-      "thumbnail": "/images/whitepapers/cbam-proof-kit-cover.jpg",
+      "thumbnail": "/images/articles/Stop-Using-Default-Values-CBAM-PCF.jpg",
       "intro": "Everything you need to deliver bulletproof CBAM filings—data models, supplier questionnaires, uncertainty scoring, and audit workflows.",
       "introZh": "交付可经受审查的 CBAM 报告所需的一切：数据模型、供应商问卷、不确定性评分与审计流程。",
       "whatYouGet": [

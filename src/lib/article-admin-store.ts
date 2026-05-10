@@ -26,15 +26,16 @@ function ensureArticleStoreDir() {
 }
 
 export function listManagedArticles(): ManagedArticle[] {
-  ensureArticleStoreDir();
-
   try {
     const content = fs.readFileSync(ADMIN_ARTICLES_FILE, 'utf8');
     return JSON.parse(content) as ManagedArticle[];
   } catch (error) {
-    if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
+    const code = (error as NodeJS.ErrnoException).code;
+
+    if (code === 'ENOENT' || code === 'ENOTDIR' || code === 'EACCES' || code === 'EROFS') {
       return [];
     }
+
     throw error;
   }
 }
